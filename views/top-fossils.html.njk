@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Most Liked Fossils{% endblock title %}</title>
+  </head>
+  <body>
+    {% block body %}
+    <h1>Welcome, {{ name }}</h1>
+    <form action="/like-fossil" method="post">
+      <label for="fossil-select">Select a Fossil:</label>
+      <select id="fossil-select" name="selectedFossil">
+        <option value="aust">aust</option>
+        <option value="quetz">quetz</option>
+        <option value="steg">steg</option>
+        <option value="trex">trex</option>
+      </select>
+      <button type="submit">Like Fossil</button>
+    </form>
+    {% for fossilName, fossilData in MOST_LIKED_FOSSILS %}
+    <div class="fossil-div">
+      <h3>{{ name }} this is a {{ fossilName }}</h3>
+      <h2>Liked {{ fossilData.num_likes }} times.</h2>
+      <img src="{{ fossilData.img }}" />
+    </div>
+    {% endfor %} {% endblock %}
+  </body>
+</html>
